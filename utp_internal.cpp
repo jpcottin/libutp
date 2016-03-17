@@ -1922,7 +1922,6 @@ size_t utp_process_incoming(UTPSocket *conn, const byte *packet, size_t len, boo
 	// implementation.
 	if (conn->cur_window_packets > 0) {
 		if (pk_ack_nr == ((conn->seq_nr - conn->cur_window_packets - 1) & ACK_NR_MASK)
-			&& conn->cur_window_packets > 0
 			&& pk_flags == ST_STATE) {
 			++conn->duplicate_ack;
 			if (conn->duplicate_ack == DUPLICATE_ACKS_BEFORE_RESEND && conn->mtu_probe_seq) {
